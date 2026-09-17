@@ -1,0 +1,18 @@
+cat <<'EOF' > k8s/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: seclock-service
+  namespace: seclock
+  labels:
+    app: seclock
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: seclock
+EOF
