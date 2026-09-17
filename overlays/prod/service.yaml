@@ -1,0 +1,15 @@
+cat << 'EOF' > overlays/prod/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: seclock-service
+  namespace: seclock
+spec:
+  type: LoadBalancer
+  selector:
+    app: seclock
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+EOF
